@@ -41,12 +41,10 @@ public class MainActivity extends AppCompatActivity {
         paint.init(metrics);
 
 
-
-
     }
 
 
-    public void checkWritePermissions(){
+    public void checkWritePermissions() {
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void checkReadPermissions(){
+    public void checkReadPermissions() {
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{
@@ -70,30 +68,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void screenShot() {
 
-    public void screenShot(){
+        Random generator = new Random();
+        int n = 1000000000;
+        Bitmap bit;
 
-            Random generator = new Random();
-            int n = 1000000000;
-            Bitmap bit;
+        bit = paint.sendBitMap();
+        n = generator.nextInt(n);
+        String name = "ss-" + n + ".jpg";
 
-            bit = paint.sendBitMap();
-            n = generator.nextInt(n);
-            String name = "ss-" + n + ".jpg";
-
-            String root = Environment.getExternalStorageDirectory().toString();
-            File myDir = new File(root + "/saved_images");
-            myDir.mkdirs();
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/saved_images");
+        myDir.mkdirs();
 
 
-            File file = new File(myDir, name);
-            if (file.exists()) file.delete ();
-            try {
-                MediaStore.Images.Media.insertImage(getContentResolver(), bit, name, "Screenshot from Simple Scribbles");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
+        File file = new File(myDir, name);
+        if (file.exists()) file.delete();
+        try {
+            MediaStore.Images.Media.insertImage(getContentResolver(), bit, name, "Screenshot from Simple Scribbles");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -105,20 +101,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (id == R.id.black_round) {
-            Toast.makeText(getApplicationContext(),"Black Lines Activated",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Black Lines Activated", Toast.LENGTH_SHORT).show();
             paint.black();
         }
         if (id == R.id.white_round) {
-            Toast.makeText(getApplicationContext(),"White Lines Activated",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "White Lines Activated", Toast.LENGTH_SHORT).show();
             paint.white();
         }
         if (id == R.id.erase) {
-            Toast.makeText(getApplicationContext(),"Erased",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Erased", Toast.LENGTH_SHORT).show();
             paint.erase();
         }
 
         if (id == R.id.screenShot) {
-            Toast.makeText(getApplicationContext(),"Click, Scribble Added to Gallery", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Click, Scribble Added to Gallery", Toast.LENGTH_LONG).show();
             screenShot();
 
         }
