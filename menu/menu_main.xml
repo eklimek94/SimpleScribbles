@@ -1,0 +1,34 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/MyTheme"
+    app:popupTheme="@style/MyTheme">
+
+    <item
+        android:id="@+id/black_round"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@mipmap/black_round"
+        />
+
+    <item
+        android:id="@+id/white_round"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@mipmap/white_round"
+        />
+
+    <item
+    android:id="@+id/erase"
+    android:title=""
+    app:showAsAction="always"
+    android:icon="@mipmap/delete2"
+        />
+
+    <item
+        android:id="@+id/screenShot"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@mipmap/camera"
+        />
+</menu>
